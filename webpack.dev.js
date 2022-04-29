@@ -22,15 +22,15 @@ module.exports = {
   },
   resolve: { extensions: [".ts", ".js", ".tsx"] },
   output: {
-    path: "/public/dist",
-    publicPath: "/public/dist",
+    path: "/",
+    publicPath: "/",
     filename: "bundle.js"
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      filename: 'index',
-      template: './public/index.ejs'
+      filename: 'index.html',
+      template: './public/index.html'
     })
   ]
 };

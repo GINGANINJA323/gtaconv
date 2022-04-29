@@ -20,8 +20,8 @@ module.exports = {
   },
   resolve: { extensions: [".ts", ".js", ".tsx"] },
   output: {
-    path: path.resolve(__dirname, "public/dist/"),
-    publicPath: "/public/dist/",
+    path: "/",
+    publicPath: "/",
     filename: "bundle.js"
   },
   plugins: []
