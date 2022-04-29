@@ -3,7 +3,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: "./index.tsx",
+  entry: ["webpack-hot-middleware/client?reload=true", "./index.tsx"],
   mode: "development",
   devtool: "inline-source-map",
   module: {

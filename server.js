@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const webpack = require('webpack');
 const middleware = require('webpack-dev-middleware');
+const hotReloader = require('webpack-hot-middleware');
 const { getBreadPrice } = require('./crawler');
 const { DOMAIN, PORT, MODE } = require('./config.json');
 const config = require('./webpack.dev');
@@ -18,7 +19,10 @@ server.get('/api/bread', async(_req, res) => {
 
 if (MODE !== 'prod') {
   const compiler = webpack(config);
-  server.use(middleware(compiler)); // webpack dev middleware hook-in
+  server.use(middleware(compiler, {
+    publicPath: config.output.publicPath
+  })); // webpack dev middleware hook-in
+  server.use(hotReloader(compiler)); // webpack hot reloader
 } else {
   server.get('*', async(_req, res) => {
     res.render('index');
