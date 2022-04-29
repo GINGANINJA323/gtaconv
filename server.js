@@ -9,8 +9,7 @@ const config = require('./webpack.dev');
 const server = express();
 
 server.use(cors()); // Fix CORS error denying access to API responses.
-server.set('views', 'public');
-server.use(express.static('public'));
+server.use(express.static('public/static'));
 
 server.get('/api/bread', async(_req, res) => {
   const bread = await getBreadPrice();
