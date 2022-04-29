@@ -5,7 +5,7 @@ const ContainerDiv = styled.div`
   display: grid;
   width: 100%;
   min-height: 100vh;
-  grid-template-columns: 5% auto 5%;
+  grid-template-columns: 10% auto auto 10%;
   font-family: 'Titillium Web', sans-serif;
   font-weight: 400;
   background-color: #1A1A1A;
@@ -21,7 +21,7 @@ const HeaderRow = styled.div`
   display: flex;
   text-align: center;
   grid-row: 1;
-  grid-column: 2;
+  grid-column: 2 / span 2;
   flex-direction: column;
 `;
 
@@ -29,14 +29,25 @@ const FooterRow = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-  grid-column: 2;
+  grid-column: 2 / span 2;
   grid-row: auto;
+`;
+
+const Content = styled.div`
+  grid-row: 2;
+  grid-column: ${props => props.col};
 `;
 
 const App = (): JSX.Element => {
   const [breadPrice, setBreadPrice] = React.useState(2.10);
   const [exchangeRate, setExchangeRate] = React.useState(91161.4);
+  const [intConvValue, setIntConvValue] = React.useState(100);
+  const [result, setResult] = React.useState(intConvValue * exchangeRate);
   const baseUrl = window.location.origin;
+
+  const getConvValue = (pounds) => {
+    return pounds * exchangeRate;
+  }
 
   const getBreadPrice = async() => {
     await fetch(`${baseUrl}/api/bread`)
@@ -54,11 +65,21 @@ const App = (): JSX.Element => {
           {'GTA$ Converter'}
         </h1>
       </HeaderRow>
-      <div>
+      <Content col={2}>
         <h2>{`The exchange rate of GTA$ is: $${exchangeRate}/£1.`}</h2>
         <p>{`At this rate, the price of bread is: $${breadPrice * exchangeRate}.`}</p>
         <p>{`The cost of a car at £13,000 is $${13000 * exchangeRate}.`}</p>
-      </div>
+      </Content>
+      <Content col={3}>
+        <h2>{`Interactive Converter:`}</h2>
+        <input
+          type={'number'}
+          value={intConvValue}
+          onChange={e => setIntConvValue(Number(e.target.value))}
+          min={0}
+        />
+        <p>{`...is $${getConvValue(intConvValue)}.`}</p>
+      </Content>
       <FooterRow>
         <p>Created using <a target="_blank" rel="noopener noreferrer" href="https://reactjs.org/">ReactJS</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.typescriptlang.org/">TypeScript</a>.</p>
         <p>Wanna see the code? Here's my <a target="_blank" rel="noopener noreferrer" href="https://github.com/GINGANINJA323/gtaconv">repo</a>.</p>
