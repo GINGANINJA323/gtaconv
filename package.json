@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:ui": "webpack serve --open --config webpack.dev.js --hot",
-    "build": "npm run ts && webpack --config webpack.prod.js",
+    "build": "webpack --config webpack.prod.js",
     "start": "nodemon server.js --config nodemon.json --watch",
     "ts": "npx tsc --jsx react",
     "test": "jest"
@@ -17,6 +17,7 @@
     "@babel/core": "^7.16.12",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
     "@babel/runtime": "^7.16.7",
     "@types/express": "^4.17.13",
     "babel-loader": "^8.2.3",
@@ -38,6 +39,10 @@
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.16.10",
     "@types/react": "^17.0.38",
-    "@types/styled-components": "^5.1.21"
+    "@types/react-dom": "^18.0.3",
+    "@types/styled-components": "^5.1.21",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack-dev-middleware": "^5.3.1",
+    "webpack-hot-middleware": "^2.25.1"
   }
 }

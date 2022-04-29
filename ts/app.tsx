@@ -52,11 +52,11 @@ const App = (): JSX.Element => {
     <ContainerDiv>
       <HeaderRow>
         <h1>
-          {'GTA$ Conversions'}
+          {'GTA$ Converter'}
         </h1>
       </HeaderRow>
       <div>
-        <button onClick={getBreadPrice}>{'Get Bread Price'}</button>
+        <button onClick={getBreadPrice}>{'Get bread Price'}</button>
       </div>
       <FooterRow>
         <p>Created using <a target="_blank" rel="noopener noreferrer" href="https://reactjs.org/">ReactJS</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.typescriptlang.org/">TypeScript</a>.</p>

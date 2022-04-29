@@ -3,13 +3,15 @@ const Nightmare = require('nightmare');
 const nightmare = Nightmare();
 
 const getBreadPrice = async() => {
-  const selector = '#value';
+  const breadSelector = 'span.value';
   const breadPrice = await nightmare.goto('https://www.tesco.com/groceries/en-GB/products/256174499')
     .evaluate((selector) => {
-      return document.title
-    }, selector);
+      console.log(document.querySelector(selector));
+      console.log(document);
+      return document.body;
+    }, breadSelector);
 
-  console.log(breadPrice);
+  // console.log(breadPrice);
   return breadPrice;
 }
 
