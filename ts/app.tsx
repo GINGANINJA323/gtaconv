@@ -34,7 +34,8 @@ const FooterRow = styled.div`
 `;
 
 const App = (): JSX.Element => {
-  const [breadPrice, setBreadPrice] = React.useState(0);
+  const [breadPrice, setBreadPrice] = React.useState(2.10);
+  const [exchangeRate, setExchangeRate] = React.useState(91161.4);
   const baseUrl = window.location.origin;
 
   const getBreadPrice = async() => {
@@ -46,8 +47,6 @@ const App = (): JSX.Element => {
       .catch(() => console.log('Error getting bread price'));
   }
 
-  console.log(breadPrice);
-
   return (
     <ContainerDiv>
       <HeaderRow>
@@ -56,7 +55,9 @@ const App = (): JSX.Element => {
         </h1>
       </HeaderRow>
       <div>
-        <button onClick={getBreadPrice}>{'Get bread Price'}</button>
+        <h2>{`The exchange rate of GTA$ is: $${exchangeRate}/£1.`}</h2>
+        <p>{`At this rate, the price of bread is: $${breadPrice * exchangeRate}.`}</p>
+        <p>{`The cost of a car at £13,000 is $${13000 * exchangeRate}.`}</p>
       </div>
       <FooterRow>
         <p>Created using <a target="_blank" rel="noopener noreferrer" href="https://reactjs.org/">ReactJS</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.typescriptlang.org/">TypeScript</a>.</p>
