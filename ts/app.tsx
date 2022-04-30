@@ -67,8 +67,8 @@ const App = (): JSX.Element => {
       </HeaderRow>
       <Content col={2}>
         <h2>{`The exchange rate of GTA$ is: $${exchangeRate}/£1.`}</h2>
-        <p>{`At this rate, the price of bread is: $${breadPrice * exchangeRate}.`}</p>
-        <p>{`The cost of a car at £13,000 is $${13000 * exchangeRate}.`}</p>
+        <p>{`At this rate, the price of bread (£2.10) is: $${breadPrice * exchangeRate} GTA$.`}</p>
+        <p>{`The cost of a car at £13,000 is ${13000 * exchangeRate} GTA$.`}</p>
       </Content>
       <Content col={3}>
         <h2>{`Interactive Converter:`}</h2>
@@ -78,7 +78,7 @@ const App = (): JSX.Element => {
           onChange={e => setIntConvValue(Number(e.target.value))}
           min={0}
         />
-        <p>{`...is $${getConvValue(intConvValue)}.`}</p>
+        <p>{`...is ${getConvValue(intConvValue)} GTA$.`}</p>
       </Content>
       <FooterRow>
         <p>Created using <a target="_blank" rel="noopener noreferrer" href="https://reactjs.org/">ReactJS</a> and <a target="_blank" rel="noopener noreferrer" href="https://www.typescriptlang.org/">TypeScript</a>.</p>
